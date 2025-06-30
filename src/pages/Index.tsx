@@ -125,6 +125,16 @@ const Index = () => {
               onThemeChange={handleThemeChange}
             />
           } />
+          <Route path="/bots" element={
+            <MainDashboard 
+              onSelectBot={setSelectedBot}
+              chatHistory={chatHistory}
+              user={currentUser}
+              onUpdateUser={setCurrentUser}
+              currentTheme={currentTheme}
+              onThemeChange={handleThemeChange}
+            />
+          } />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
