@@ -1,7 +1,11 @@
 
 import { motion } from 'framer-motion';
 import { Bot } from '../types';
-import { Brain, Code, Palette, BookOpen, Calculator, Music, Camera, Gamepad2 } from 'lucide-react';
+import { 
+  Brain, Code, Palette, BookOpen, Calculator, Music, Camera, Gamepad2,
+  Share2, Headphones, BarChart3, TrendingUp, PenTool, Search,
+  ShoppingCart, Mail, User, Users, Calendar, Target
+} from 'lucide-react';
 
 interface BotSelectionProps {
   onSelectBot: (bot: Bot) => void;
@@ -9,6 +13,7 @@ interface BotSelectionProps {
 
 const BotSelection = ({ onSelectBot }: BotSelectionProps) => {
   const bots: Bot[] = [
+    // English Bots
     {
       id: 'brain-ai',
       name: 'Brain AI',
@@ -57,84 +62,197 @@ const BotSelection = ({ onSelectBot }: BotSelectionProps) => {
         "Let's think outside the box!"
       ]
     },
+    // Slovak Bots
     {
-      id: 'research-bot',
-      name: 'Research Bot',
-      description: 'Deep research and analysis for academic and professional projects',
-      avatar: BookOpen,
-      color: 'indigo',
-      gradient: 'from-indigo-500 to-blue-600',
-      category: 'Research',
-      capabilities: ['Research', 'Analysis', 'Citations', 'Fact-checking'],
-      responses: [
-        "I'll help you research this thoroughly...",
-        "Based on my analysis of the data...",
-        "Here are the key findings...",
-        "Let me cross-reference multiple sources..."
-      ]
-    },
-    {
-      id: 'math-bot',
-      name: 'Math Bot',
-      description: 'Advanced mathematics, calculations, and problem-solving assistance',
-      avatar: Calculator,
-      color: 'orange',
-      gradient: 'from-orange-500 to-red-600',
-      category: 'Mathematics',
-      capabilities: ['Calculations', 'Problem Solving', 'Statistics', 'Formulas'],
-      responses: [
-        "Let me solve this step by step...",
-        "Here's the mathematical approach...",
-        "The calculation shows...",
-        "Let me break down this formula..."
-      ]
-    },
-    {
-      id: 'music-bot',
-      name: 'Music Bot',
-      description: 'Music theory, composition, and audio production guidance',
-      avatar: Music,
+      id: 'social-media-manager',
+      name: 'Sociálny médiový manažér',
+      description: 'Automaticky vytvára a plánuje príspevky na sociálne siete, reaguje na komentáre a sleduje trendy',
+      avatar: Share2,
       color: 'purple',
       gradient: 'from-purple-500 to-indigo-600',
-      category: 'Music',
-      capabilities: ['Music Theory', 'Composition', 'Production', 'Instruments'],
+      category: 'Marketing',
+      capabilities: ['Tvorba obsahu', 'Plánovanie príspevkov', 'Sledovanie trendov', 'Správa komentárov'],
       responses: [
-        "Let's create some musical magic...",
-        "Here's a chord progression idea...",
-        "The harmony suggests...",
-        "Try this rhythm pattern..."
+        "Vytvorím pre vás pútavý obsah na sociálne siete...",
+        "Naplánujem vašu kampaň pre maximálny dosah...",
+        "Sledujem aktuálne trendy vo vašom odvetví...",
+        "Pripravím stratégiu pre zvýšenie engagementu..."
       ]
     },
     {
-      id: 'photo-bot',
-      name: 'Photo Bot',
-      description: 'Photography tips, editing advice, and visual composition guidance',
-      avatar: Camera,
-      color: 'yellow',
-      gradient: 'from-yellow-500 to-orange-600',
-      category: 'Photography',
-      capabilities: ['Composition', 'Editing', 'Lighting', 'Equipment'],
+      id: 'customer-support',
+      name: 'Špecialista na zákaznícku podporu',
+      description: 'Poskytuje nepretržitú podporu zákazníkom s personalizovanými odpoveďami',
+      avatar: Headphones,
+      color: 'blue',
+      gradient: 'from-blue-500 to-cyan-600',
+      category: 'Podpora',
+      capabilities: ['24/7 podpora', 'Personalizované odpovede', 'Riešenie problémov', 'Eskalácia'],
       responses: [
-        "Great shot! Here's how to improve it...",
-        "The lighting in this image...",
-        "Try adjusting the composition...",
-        "This editing technique will enhance..."
+        "Som tu, aby som vám pomohol s vaším problémom...",
+        "Rozumiem vašej situácii, vyriešime to spolu...",
+        "Nájdem pre vás najlepšie riešenie...",
+        "Váš problém je môjou prioritou..."
       ]
     },
     {
-      id: 'game-bot',
-      name: 'Game Bot',
-      description: 'Gaming strategies, reviews, and game development insights',
-      avatar: Gamepad2,
+      id: 'data-analyst',
+      name: 'Dátový analytik',
+      description: 'Spracováva veľké množstvá dát a generuje prehľadné analýzy a odporúčania',
+      avatar: BarChart3,
       color: 'emerald',
       gradient: 'from-emerald-500 to-green-600',
-      category: 'Gaming',
-      capabilities: ['Strategy', 'Reviews', 'Development', 'Tips'],
+      category: 'Analýzy',
+      capabilities: ['Analýza dát', 'Vizualizácia', 'Predikcie', 'Odporúčania'],
       responses: [
-        "Here's a winning strategy...",
-        "This game mechanic works because...",
-        "Try this approach for better results...",
-        "The meta suggests..."
+        "Analyzujem vaše dáta a pripravím prehľadný report...",
+        "Na základe dát odporúčam nasledujúce kroky...",
+        "Trendy ukazujú zaujímavé možnosti...",
+        "Vytvorím pre vás detailnú analýzu..."
+      ]
+    },
+    {
+      id: 'business-developer',
+      name: 'Obchodný rozvojár',
+      description: 'Pomáha pri hľadaní nových obchodných príležitostí a generovaní leadov',
+      avatar: TrendingUp,
+      color: 'orange',
+      gradient: 'from-orange-500 to-red-600',
+      category: 'Obchod',
+      capabilities: ['Hľadanie príležitostí', 'Generovanie leadov', 'Stratégie', 'Analýza trhu'],
+      responses: [
+        "Identifikoval som nové obchodné príležitosti...",
+        "Pripravím stratégiu pre expanziu na trh...",
+        "Našiel som potenciálnych partnerov...",
+        "Analyzujem konkurenčné prostredie..."
+      ]
+    },
+    {
+      id: 'copywriter',
+      name: 'Copywriter',
+      description: 'Vytvára pútavé texty pre webové stránky, reklamy, blogy a ďalšie kanály',
+      avatar: PenTool,
+      color: 'rose',
+      gradient: 'from-rose-500 to-pink-600',
+      category: 'Marketing',
+      capabilities: ['Tvorba textov', 'Reklamné texty', 'Blog články', 'Webový obsah'],
+      responses: [
+        "Napíšem pre vás pútavý text, ktorý zaujme...",
+        "Vytvorím obsah v súlade s tónom vašej značky...",
+        "Pripravím kampaň, ktorá zvýši konverzie...",
+        "Vaša správa bude jasná a presvedčivá..."
+      ]
+    },
+    {
+      id: 'seo-specialist',
+      name: 'SEO špecialista',
+      description: 'Optimalizuje online obsah a analyzuje výkonnosť webu pre lepšie pozície',
+      avatar: Search,
+      color: 'violet',
+      gradient: 'from-violet-500 to-purple-600',
+      category: 'Marketing',
+      capabilities: ['Optimalizácia obsahu', 'Analýza výkonnosti', 'Keyword research', 'Technické SEO'],
+      responses: [
+        "Optimalizujem váš obsah pre vyhľadávače...",
+        "Analyzujem výkonnosť vašej stránky...",
+        "Našiel som nové kľúčové slová pre vás...",
+        "Pripravím SEO stratégiu pre rast..."
+      ]
+    },
+    {
+      id: 'ecommerce-manager',
+      name: 'E-commerce manažér',
+      description: 'Spravuje online obchody od nastavenia produktov až po optimalizáciu predaja',
+      avatar: ShoppingCart,
+      color: 'teal',
+      gradient: 'from-teal-500 to-cyan-600',
+      category: 'E-commerce',
+      capabilities: ['Správa produktov', 'Optimalizácia predaja', 'Analýza výkonnosti', 'UX/UI'],
+      responses: [
+        "Optimalizujem váš online obchod pre vyššie predaje...",
+        "Analyzujem správanie zákazníkov...",
+        "Pripravím stratégiu pre zvýšenie konverzií...",
+        "Nastavím efektívne predajné procesy..."
+      ]
+    },
+    {
+      id: 'email-marketer',
+      name: 'Emailový marketér',
+      description: 'Navrhuje a automatizuje emailové kampane na zvýšenie konverzií',
+      avatar: Mail,
+      color: 'indigo',
+      gradient: 'from-indigo-500 to-blue-600',
+      category: 'Marketing',
+      capabilities: ['Emailové kampane', 'Automatizácia', 'Personalizácia', 'A/B testovanie'],
+      responses: [
+        "Vytvorím emailovú kampaň s vysokou otváracosťou...",
+        "Nastavím automatické sekvence pre lepší engagement...",
+        "Personalizujem správy pre každého zákazníka...",
+        "Optimalizujem kampane na základe výsledkov..."
+      ]
+    },
+    {
+      id: 'personal-coach',
+      name: 'Personálny kouč',
+      description: 'Podporuje osobný rozvoj a vytvára plány na zlepšenie produktivity',
+      avatar: User,
+      color: 'amber',
+      gradient: 'from-amber-500 to-orange-600',
+      category: 'Rozvoj',
+      capabilities: ['Osobný rozvoj', 'Produktivita', 'Motivácia', 'Ciele'],
+      responses: [
+        "Pomôžem vám dosiahnuť vaše ciele...",
+        "Vytvoríme plán pre váš osobný rast...",
+        "Motivujem vás k dosiahnutiu úspechu...",
+        "Nájdeme spôsob, ako zvýšiť vašu produktivitu..."
+      ]
+    },
+    {
+      id: 'hr-specialist',
+      name: 'HR špecialista',
+      description: 'Zefektívňuje nábor a pomáha s onboardovaním nových zamestnancov',
+      avatar: Users,
+      color: 'sky',
+      gradient: 'from-sky-500 to-blue-600',
+      category: 'HR',
+      capabilities: ['Nábor', 'Onboarding', 'Stratégie', 'Talent management'],
+      responses: [
+        "Pomôžem vám nájsť ideálnych kandidátov...",
+        "Vytvoríme efektívny proces náboru...",
+        "Pripravím onboarding program...",
+        "Analyzujem potreby vášho tímu..."
+      ]
+    },
+    {
+      id: 'virtual-assistant',
+      name: 'Virtuálny asistent',
+      description: 'Preberá administratívne úlohy a správu kalendára pre efektívnejšiu prácu',
+      avatar: Calendar,
+      color: 'lime',
+      gradient: 'from-lime-500 to-green-600',
+      category: 'Administratíva',
+      capabilities: ['Správa kalendára', 'Plánovanie', 'Administratíva', 'Organizácia'],
+      responses: [
+        "Zorganizujem váš kalendár a schôdzky...",
+        "Preberiem administratívne úlohy...",
+        "Naplánujem vaše aktivity efektívnejšie...",
+        "Pomôžem vám s organizáciou práce..."
+      ]
+    },
+    {
+      id: 'sales-expert',
+      name: 'Predajný expert',
+      description: 'Automatizuje predajné procesy a navrhuje stratégie na zvýšenie predaja',
+      avatar: Target,
+      color: 'red',
+      gradient: 'from-red-500 to-rose-600',
+      category: 'Predaj',
+      capabilities: ['Predajné procesy', 'Lead management', 'Stratégie', 'CRM'],
+      responses: [
+        "Optimalizujem vaše predajné procesy...",
+        "Vytvoríme stratégiu pre zvýšenie predaja...",
+        "Analyzujem vašich potenciálnych zákazníkov...",
+        "Nastavím efektívny predajný funnel..."
       ]
     }
   ];
@@ -150,10 +268,10 @@ const BotSelection = ({ onSelectBot }: BotSelectionProps) => {
           className="mb-8"
         >
           <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">
-            Choose Your AI Assistant
+            Vyberte si svojho AI asistenta
           </h1>
           <p className="text-xl text-gray-600">
-            Select from our specialized AI bots, each designed for specific tasks and expertise
+            Vyberte zo špecializovaných AI botov, každý navrhnutý pre konkrétne úlohy a odbornosť
           </p>
         </motion.div>
 
@@ -199,7 +317,7 @@ const BotSelection = ({ onSelectBot }: BotSelectionProps) => {
                       ))}
                       {bot.capabilities.length > 2 && (
                         <span className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">
-                          +{bot.capabilities.length - 2} more
+                          +{bot.capabilities.length - 2} ďalších
                         </span>
                       )}
                     </div>
@@ -209,7 +327,7 @@ const BotSelection = ({ onSelectBot }: BotSelectionProps) => {
                       whileTap={{ scale: 0.95 }}
                       className={`w-full py-3 px-4 bg-gradient-to-r ${bot.gradient} text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
                     >
-                      Start Chatting
+                      Začať konverzáciu
                     </motion.button>
                   </motion.div>
                 );

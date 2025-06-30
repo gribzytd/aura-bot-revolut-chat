@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, RotateCcw, Copy, ThumbsUp, ThumbsDown, Paperclip } from 'lucide-react';
@@ -78,7 +79,7 @@ const ChatInterface = ({ bot, messages, onSendMessage, onNewChat }: ChatInterfac
             className="flex items-center space-x-2 hover:bg-gray-50"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>New Chat</span>
+            <span>Nová konverzácia</span>
           </Button>
         </div>
       </motion.div>
@@ -96,7 +97,7 @@ const ChatInterface = ({ bot, messages, onSendMessage, onNewChat }: ChatInterfac
                 <IconComponent className="w-12 h-12 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Welcome to {bot.name}
+                Vitajte v {bot.name}
               </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
                 {bot.description}
@@ -211,7 +212,7 @@ const ChatInterface = ({ bot, messages, onSendMessage, onNewChat }: ChatInterfac
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={`Message ${bot.name}...`}
+              placeholder={`Napíšte správu pre ${bot.name}...`}
               className="min-h-[50px] max-h-32 resize-none bg-white/60 backdrop-blur-sm border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all duration-300"
             />
           </div>
@@ -226,7 +227,7 @@ const ChatInterface = ({ bot, messages, onSendMessage, onNewChat }: ChatInterfac
         </div>
         
         <p className="text-center text-xs text-gray-500 mt-3">
-          {bot.name} can make mistakes. Please verify important information.
+          {bot.name} môže robiť chyby. Prosím overujte si dôležité informácie.
         </p>
       </motion.div>
     </div>
