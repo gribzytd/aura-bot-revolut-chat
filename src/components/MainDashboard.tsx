@@ -55,7 +55,9 @@ const MainDashboard = ({
       name: 'Social Media Manager',
       description: 'Automatically creates and schedules social media posts, responds to comments and tracks trends',
       avatar: TrendingUp,
+      color: 'blue',
       gradient: 'from-blue-500 to-purple-600',
+      category: 'Marketing',
       capabilities: ['Content Creation', 'Scheduling', 'Trend Analysis', 'Community Management'],
       responses: ['Let me help you create engaging social media content!', 'I can schedule your posts across all platforms.']
     },
@@ -64,7 +66,9 @@ const MainDashboard = ({
       name: 'Customer Support Specialist',
       description: 'Provides 24/7 customer support with personalized responses',
       avatar: Users,
+      color: 'green',
       gradient: 'from-green-500 to-teal-600',
+      category: 'Support',
       capabilities: ['24/7 Support', 'Personalized Responses', 'Issue Resolution', 'Customer Satisfaction'],
       responses: ['How can I help you today?', 'I\'m here to resolve your issue quickly.']
     },
@@ -73,7 +77,9 @@ const MainDashboard = ({
       name: 'Data Analyst',
       description: 'Processes large datasets and generates clear analyses and recommendations',
       avatar: BarChart,
+      color: 'indigo',
       gradient: 'from-indigo-500 to-blue-600',
+      category: 'Analytics',
       capabilities: ['Data Processing', 'Statistical Analysis', 'Visualization', 'Insights Generation'],
       responses: ['Let me analyze your data and provide insights.', 'I can create comprehensive reports for you.']
     },
@@ -82,7 +88,9 @@ const MainDashboard = ({
       name: 'Business Developer',
       description: 'Helps find new business opportunities and generate leads',
       avatar: Briefcase,
+      color: 'orange',
       gradient: 'from-orange-500 to-red-600',
+      category: 'Business',
       capabilities: ['Lead Generation', 'Market Research', 'Strategy Development', 'Opportunity Analysis'],
       responses: ['I can help you identify new business opportunities.', 'Let\'s develop a growth strategy together.']
     },
@@ -91,7 +99,9 @@ const MainDashboard = ({
       name: 'Copywriter',
       description: 'Creates compelling copy for websites, ads, blogs and other channels',
       avatar: PenTool,
+      color: 'pink',
       gradient: 'from-pink-500 to-purple-600',
+      category: 'Content',
       capabilities: ['Website Copy', 'Ad Copy', 'Blog Writing', 'Brand Voice'],
       responses: ['I\'ll create compelling copy that converts.', 'Let me help you tell your brand story.']
     },
@@ -100,7 +110,9 @@ const MainDashboard = ({
       name: 'SEO Specialist',
       description: 'Optimizes online content and analyzes website performance',
       avatar: Search,
+      color: 'yellow',
       gradient: 'from-yellow-500 to-orange-600',
+      category: 'Marketing',
       capabilities: ['Keyword Research', 'Content Optimization', 'Technical SEO', 'Performance Analysis'],
       responses: ['I can optimize your content for search engines.', 'Let\'s improve your website rankings.']
     }
