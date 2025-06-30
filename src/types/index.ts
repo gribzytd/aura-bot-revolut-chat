@@ -1,4 +1,6 @@
 
+import { LucideIcon } from 'lucide-react';
+
 export interface User {
   id: string;
   name: string;
@@ -11,7 +13,7 @@ export interface Bot {
   id: string;
   name: string;
   description: string;
-  avatar: string;
+  avatar: LucideIcon;
   color: string;
   gradient: string;
   category: string;
