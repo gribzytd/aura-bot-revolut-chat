@@ -4,15 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { 
   MessageSquare, 
-  Bot, 
-  History, 
-  Settings, 
-  User, 
   LogOut, 
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  Plus
+  Plus,
+  Layout
 } from 'lucide-react';
 import { User as UserType } from '../types';
 
@@ -21,29 +18,30 @@ interface SidebarProps {
   onToggle: () => void;
   onLogout: () => void;
   user: UserType | null;
+  currentTheme: string;
+  onThemeChange: (theme: string) => void;
 }
 
-const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
+const Sidebar = ({ collapsed, onToggle, onLogout, user, currentTheme }: SidebarProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const navItems = [
-    { id: 'chat', path: '/', icon: MessageSquare, label: 'Chat', badge: null },
-    { id: 'bots', path: '/bots', icon: Bot, label: 'AI Bots', badge: '8' },
-    { id: 'history', path: '/history', icon: History, label: 'History', badge: null },
-    { id: 'settings', path: '/settings', icon: Settings, label: 'Settings', badge: null },
-    { id: 'account', path: '/account', icon: User, label: 'Account', badge: null },
+    { id: 'dashboard', path: '/dashboard', icon: Layout, label: 'Dashboard' },
+    { id: 'chat', path: '/', icon: MessageSquare, label: 'Chat' }
   ];
+
+  const isDark = currentTheme === 'dark';
 
   return (
     <motion.div
       initial={{ x: -300 }}
       animate={{ x: 0 }}
-      className={`fixed left-0 top-0 h-full bg-white/80 backdrop-blur-xl border-r border-gray-200/50 shadow-2xl z-50 transition-all duration-300 ${
+      className={`fixed left-0 top-0 h-full ${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} border-r shadow-2xl z-50 transition-all duration-300 ${
         collapsed ? 'w-16' : 'w-64'
       }`}
     >
       {/* Header */}
-      <div className="p-4 border-b border-gray-200/50">
+      <div className={`p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <div className="flex items-center justify-between">
           <AnimatePresence>
             {!collapsed && (
@@ -57,7 +55,7 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                <h1 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   Neural AI
                 </h1>
               </motion.div>
@@ -66,12 +64,12 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
           
           <button
             onClick={onToggle}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className={`p-2 rounded-lg transition-colors ${isDark ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-600'}`}
           >
             {collapsed ? (
-              <ChevronRight className="w-5 h-5 text-gray-600" />
+              <ChevronRight className="w-5 h-5" />
             ) : (
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
+              <ChevronLeft className="w-5 h-5" />
             )}
           </button>
         </div>
@@ -116,8 +114,12 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
                   className={({ isActive }) =>
                     `flex items-center space-x-3 p-3 rounded-xl transition-all duration-300 relative group ${
                       isActive
-                        ? 'bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 shadow-lg'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        ? isDark 
+                          ? 'bg-gray-800 text-blue-400 shadow-lg'
+                          : 'bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 shadow-lg'
+                        : isDark 
+                          ? 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                     }`
                   }
                   onMouseEnter={() => setHoveredItem(item.id)}
@@ -126,19 +128,14 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
                   <Icon className="w-5 h-5 flex-shrink-0" />
                   <AnimatePresence>
                     {!collapsed && (
-                      <motion.div
+                      <motion.span
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -10 }}
-                        className="flex items-center justify-between flex-1"
+                        className="font-medium"
                       >
-                        <span className="font-medium">{item.label}</span>
-                        {item.badge && (
-                          <span className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full">
-                            {item.badge}
-                          </span>
-                        )}
-                      </motion.div>
+                        {item.label}
+                      </motion.span>
                     )}
                   </AnimatePresence>
                   
@@ -164,14 +161,14 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
       </nav>
 
       {/* User Profile & Logout */}
-      <div className="p-4 border-t border-gray-200/50">
+      <div className={`p-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <AnimatePresence>
           {!collapsed && user && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
-              className="mb-4 p-3 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl"
+              className={`mb-4 p-3 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gradient-to-r from-gray-50 to-blue-50'}`}
             >
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
@@ -180,10 +177,10 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className={`text-sm font-medium truncate ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {user.name}
                   </p>
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className={`text-xs truncate ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     {user.email}
                   </p>
                 </div>
@@ -194,9 +191,9 @@ const Sidebar = ({ collapsed, onToggle, onLogout, user }: SidebarProps) => {
 
         <button
           onClick={onLogout}
-          className={`w-full flex items-center space-x-3 p-3 text-red-600 hover:bg-red-50 rounded-xl transition-all duration-300 ${
+          className={`w-full flex items-center space-x-3 p-3 text-red-600 rounded-xl transition-all duration-300 ${
             collapsed ? 'justify-center' : ''
-          }`}
+          } ${isDark ? 'hover:bg-gray-800' : 'hover:bg-red-50'}`}
         >
           <LogOut className="w-5 h-5" />
           <AnimatePresence>
